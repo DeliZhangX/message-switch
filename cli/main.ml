@@ -321,7 +321,11 @@ let tail common_opts follow =
     print_endline "" in
   let finished = ref false in
   while not(!finished) do
-    match Client.trace ~t:c ~from:!from ~timeout () with
+    let timesss = relative_time event in
+    let ttt = Client.trace ~t:c ~from:!from ~timeout () in
+    let timeeee = relative_time event in
+    Printf.sprintf "%.1f -- %.1f xxx" timesss timeeee;
+    match ttt with
     | `Error _ -> failwith "Trace failed"
     | `Ok trace ->
       let endpoint = function
